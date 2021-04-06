@@ -63,25 +63,118 @@ if __name__ == '__main__':
     q40 = currentJointState.position[3]
     q50 = currentJointState.position[4]
     q60 = currentJointState.position[5]
+    #1.6962834294765.   1.66283127117. 1.67592124617
+    graspBall1 = [-1.7239178628693832, 1.6962834294765, 3.3961112257191512, -3.38462117823865, 1.4459102321300366, 0.20018753676786538]
+    graspBall2 = [-1.7239178628693832, 1.67592124617, 3.39262056572, -3.38462117823865, 1.4459102321300366, 0.20018753676786538]
+    graspBall3 = [-1.7239178628693832, 1.66283127117, 3.3961112257191512, -3.38462117823865, 1.4459102321300366, 0.20018753676786538]
+    graspBall4 = [-1.7239178628693832, 1.676648467, 3.3961112257191512, -3.38462117823865, 1.4459102321300366, 0.20018753676786538]
+    throwPosn = [-1.7239178628693832, 2.5543, 4.3961112257191512, -3.38462117823865, 1.4459102321300366, 0.20018753676786538]
+   
+    q11 = graspBall1[0]
+    q21 = graspBall1[1]
+    q31 = graspBall1[2]
+    q41 = graspBall1[3]
+    q51 = graspBall1[4]
+    q61 = graspBall1[5]
 
-    # Final state
-    if firstMove:
-        xf = 0.0
-        yf = 0.75
-        zf = 0.8
-        firstMove = False
+    q12 = graspBall2[0]
+    q22 = graspBall2[1]
+    q32 = graspBall2[2]
+    q42 = graspBall2[3]
+    q52 = graspBall2[4]
+    q62 = graspBall2[5]
+
+    q13 = graspBall3[0]
+    q23 = graspBall3[1]
+    q33 = graspBall3[2]
+    q43 = graspBall3[3]
+    q53 = graspBall3[4]
+    q63 = graspBall3[5]
+
+    t1 = throwPosn[0]
+    t2 = throwPosn[1]
+    t3 = throwPosn[2]
+    t4 = throwPosn[3]
+    t5 = throwPosn[4]
+    t6 = throwPosn[5]
+
+    gripperGrasp = [0.7, 0.6, 0.5]
+
+
+    def origPosition():
+        moveJoint([q10,q20,q30,q40,q50,q60])
+        moveFingers([1.3,1.3,1.3])
+    
+    def throwPosition(gripPosn):
+        moveFingers(gripPosn)
+        moveJoint([t1,t2,t3,t4,t5,t6])
+    
+    def initPositionWithBall(gripPosn):
+        moveFingers(gripPosn)       
+        moveJoint([q10,q20,q30,q40,q50,q60])
+    
+    def aboveBallPosition1():
+        moveJoint([q13,q23,q33,q43,q53,q63])
+
+    def gripBall1():
+        grip = [1.055, 1.065, 1.065]
+        moveFingers(grip)
+        return grip
+    
+    def gripBall2():
+        grip = [1.05, 1.06, 1.06]
+        moveFingers(grip)
+        return grip
+
+
+    # Move robot to initial state
+    # moveJoint([q10,q20,q30,q40,q50,q60])
+    moveFingers([0.3,0.3,0.3])
+    print("Grip or Move?")
+    i = raw_input()
+    while (i == "m"):
+        print("Which position?")
+        b = raw_input()
+        if b == "1":
+            aboveBallPosition1()
+        print("Move?")
+        i = raw_input()
+    
+    print("Grip?")
+    j = raw_input()
+    while (j == "g"):
+        print("Grip ball?")
+        b = raw_input()
+        if b == "1":
+            gripPosn = gripBall1()
+        if b == "2":
+            gripPosn = gripBall2()
+        print("Grip?")
+        j = raw_input()
+    
+    print("Move back to home?")
+    ans = raw_input()
+    if ans == "y":
+        origPosition()
     else:
-        xf = 0.0
-        yf = 2.0
-        zf = 1.5
+        throwPosition(gripPosn)
+    '''
+    # Force control ??
+    # Final state
+
+    xf = 0.0
+    yf = 0.75
+    zf = 0.5
     ###########################################################################
 
 
     # Boundary conditions (DON'T WORRY ABOUT THESE, and DON'T UNCOMMENT)
     init_q  = Matrix([[-q10], [q20-pi/2], [q30+pi/2], [q40], [q50-pi], [q60+pi/2]])
+    #init_q1  = Matrix([[-q11], [q21-pi/2], [q31+pi/2], [q41], [q51-pi], [q61+pi/2]])
     
     # Initial position
     _, init_X = systemKinematics(init_q)
+    #$_, init_X1 = systemKinematics(init_q)
     final_X = Matrix([[xf],[yf],[zf]])
     
     print(init_X[0], final_X[0])
@@ -92,12 +185,6 @@ if __name__ == '__main__':
     yPath = numpy.linspace(float(init_X[1]), float(final_X[1]), num=numPts)
     zPath = numpy.linspace(float(init_X[2]), float(final_X[2]), num=numPts)
     ###########################################################################
-
-    
-    # Move robot to initial state
-    moveJoint([q10,q20,q30,q40,q50,q60])
-    moveFingers([1.3,1.3,1.3])
-
     # Initialize variables
     delta_X = Matrix([[1000],[1000],[1000]])
     
@@ -119,9 +206,7 @@ if __name__ == '__main__':
       print(i)
       _, init_X = systemKinematics(init_q)
       delta_X = path_X - Matrix([[init_X[0]],[init_X[1]],[init_X[2]]])
-      if i == 2:
-        moveFingers([0.0,0.0,0.0])
-      
+      moveFingers([1.05, 1.08, 1.08])
       while (Abs(delta_X.norm()) > error):
         count = 0
         _, init_X = systemKinematics(init_q)
@@ -137,6 +222,7 @@ if __name__ == '__main__':
         init_q = init_q + step*delta_q
 
         # Convert back from DH angles to JACO angles
+        moveFingers([1.05, 1.08, 1.08])
         moveJoint([-init_q[0], init_q[1]+pi/2, init_q[2]-pi/2, init_q[3], init_q[4]+pi, init_q[5]-pi/2])
         
         # Trajectory plotting
@@ -144,7 +230,7 @@ if __name__ == '__main__':
         Y.append(init_X[1])
         Z.append(init_X[2])
  
-    moveFingers([0.9,0.9,0.9])
+    #moveFingers([0.9,0.9,0.9])
 
     elapsed = time.time() - ti
     print(elapsed)
@@ -155,7 +241,6 @@ if __name__ == '__main__':
     # ax.plot(xPath, yPath, zPath, label='path')
     # ax.legend()
     # plt.show()
-    
-
+    '''
   except rospy.ROSInterruptException:
     print "program interrupted before completion"
