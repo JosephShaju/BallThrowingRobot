@@ -1,0 +1,507 @@
+
+<?xml version="1.0" ?>
+<sdf version="1.4">
+
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <model name="brick_box_1"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0 0.625 1 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>3 0.25 2</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale> 3 0.25 2</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_2"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">-1 0.5 1 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 0.25 2</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>1 0.25 2</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_3"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0 0.5 0.375 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 0.25 0.75</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>1 0.25 0.75</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_4"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0.5 0.5 1.625 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>2 0.25 0.75</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>2 0.25 0.75</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+
+    <model name="brick_box_5"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0.75 0.5 0.25 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.25 0.5</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>0.5 0.25 0.5</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_6"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">1.25 0.5 0.625 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.25 1.25</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>0.5 0.25 1.25</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_7"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0.25 0.5 1 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.25 0.5</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>0.5 0.25 0.5</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name="brick_box_8"> 
+        <static>1</static>
+        <link name="chassis">
+
+        <pose frame="">0.75 0.5 1.125 0 0 0</pose>
+        <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.25 0.25</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce />
+          <friction>
+            <ode />
+          </friction>
+          <contact>
+            <ode />
+          </contact>
+        </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://brick_box_3x1x3/meshes/simple_box.dae</uri>
+              <scale>0.5 0.25 0.25</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://brick_box_3x1x3/materials/scripts</uri>
+              <uri>model:??brick_box_3x1x3/materials/textures</uri>
+              <name>BrickBox/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        </link>
+    </model>
+
+    <model name='unit_sphere1'>
+      <pose frame=''>0.75 0 0.025 0 0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>0.02</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.025</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.025</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='unit_sphere2'>
+      <pose frame=''>-0.75 0 0.025 0 0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>0.02</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.025</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.025</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+  </world>
+</sdf>
