@@ -52,9 +52,9 @@ if __name__ == '__main__':
 
     ######################### EDIT THIS SECTION ###############################
     # Parameters
-    numPts = 4		# Discretized path (Choose number of points)
-    step   = 1.0	# Step size 
-    error  = 0.001	# Error between state and desired state (theshold value, in meters)
+    numPts = 4      # Discretized path (Choose number of points)
+    step   = 1.0    # Step size 
+    error  = 0.001  # Error between state and desired state (theshold value, in meters)
     firstMove = True
     # Initial state
     q10 = currentJointState.position[0]
@@ -143,6 +143,53 @@ if __name__ == '__main__':
         moveFingers(grip)
         return grip
 
+    def lefttest():
+        cont = "y"
+        angadd1=0
+        angadd2=0
+        angadd3=0
+        angadd4=0
+        angadd5=0
+        angadd1 += float(raw_input("x degrees Upward J2: "))
+        ltleft1 = -3.29471786287
+        ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
+        ltleft3 = 3.39262056572+(angadd2*pi/180)
+        ltleft4 = -3.38462117823865-(angadd3*pi/180)
+        ltleft5 = 1.4459102321300366+(angadd4*pi/180)
+        ltleft6 = 0.20018753676786538+(angadd5*pi/180)
+        cont = raw_input("Next(any/n): ")
+        moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+        ltleft1 = -3.29471786287+0.717541341
+        moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+
+        while cont != "n":
+            angadd1 += float(raw_input("x degrees Upward J2: "))
+            ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            angadd2 += float(raw_input("x degrees Upward J3: "))
+            ltleft3 = 3.39262056572 +(angadd2*pi/180)
+            #ltleft1 = -3.29471786287+(angadd*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            angadd3 += float(raw_input("Rot x degrees J4: "))
+            ltleft4 = -3.38462117823865-(angadd3*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            angadd4 += float(raw_input("Rot x degrees J5: "))
+            ltleft5 = 1.4459102321300366-(angadd4*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            angadd5 += float(raw_input("Rot x degrees J6: "))
+            ltleft6 = 0.20018753676786538-(angadd5*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            ltleft1 += (float(raw_input("Rotate base by (degrees): "))*pi/180)
+            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
+            #Print angles
+            print("Angles 2-6")
+            print("J1=BA",angadd1,angadd2,angadd3,angadd4,angadd5)               
+            print("Base Angle: ")
+            print(ltleft6)
+            cont = raw_input("continue? (any/n): ")     
+
+    #def leftballmove():
+
 
     # Move robot to initial state
     # moveJoint([q10,q20,q30,q40,q50,q60])
@@ -156,55 +203,19 @@ if __name__ == '__main__':
             aboveLeftBallPosition()
         if b == "r":
             aboveRightBallPosition()
+
+
+        #if b == "lbm":
+
         if b == "lt":
-            cont = "y"
-            angadd1=0
-            angadd2=0
-            angadd3=0
-            angadd4=0
-            angadd5=0
-            angadd1 += float(raw_input("x degrees Upward J2: "))
-            ltleft1 = -3.29471786287
-            ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
-            ltleft3 = 3.39262056572+(angadd2*pi/180)
-            ltleft4 = -3.38462117823865-(angadd3*pi/180)
-            ltleft5 = 1.4459102321300366+(angadd4*pi/180)
-            ltleft6 = 0.20018753676786538+(angadd5*pi/180)
-            cont = raw_input("Next(any/n): ")
-            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-            ltleft1 = -3.29471786287+0.717541341
-            moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-
-            while cont != "n":
-                angadd1 += float(raw_input("x degrees Upward J2: "))
-                ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd2 += float(raw_input("x degrees Upward J3: "))
-                ltleft3 = 3.39262056572 +(angadd2*pi/180)
-                #ltleft1 = -3.29471786287+(angadd*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd3 += float(raw_input("Rot x degrees J4: "))
-                ltleft4 = -3.38462117823865-(angadd3*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd4 += float(raw_input("Rot x degrees J5: "))
-                ltleft5 = 1.4459102321300366-(angadd4*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd5 += float(raw_input("Rot x degrees J6: "))
-                ltleft6 = 0.20018753676786538-(angadd5*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                ltleft1 += (float(raw_input("Rotate base by (degrees): "))*pi/180)
-                moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-
+            lefttest()
                 ########################################################
                 ###                 ANGLES                           ###
                 ########################################################
-                #(35.0, -38.0, 101.0, 113.0, 53.0)
+                #('J1=BA', 33.0, -32.0, 65.0, -101.0, -68.0)
+                # Base Angle:
+                # 0.200187536767865 + 0.377777777777778*pi
 
-                print("Angles 2-6")
-                print("J1=BA",angadd1,angadd2,angadd3,angadd4,angadd5)               
-                print("Base Angle: ")
-                print(ltleft6)
-                cont = raw_input("continue? (any/n): ")            
 
 
         print("Move?")
