@@ -198,11 +198,11 @@ if __name__ == '__main__':
                 ########################################################
                 ###                 ANGLES                           ###
                 ########################################################
-                #(-35.0, -38.0, -101.0, 113.0, 53.0)
+                #(35.0, -38.0, 101.0, 113.0, 53.0)
 
                 print("Angles 2-6")
-                print(angadd1,angadd2,angadd3,angadd4,angadd5)               
-                print("Base angle: ")
+                print("J1=BA",angadd1,angadd2,angadd3,angadd4,angadd5)               
+                print("Base Angle: ")
                 print(ltleft6)
                 cont = raw_input("continue? (any/n): ")            
 
