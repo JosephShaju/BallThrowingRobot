@@ -163,9 +163,9 @@ if __name__ == '__main__':
             angadd3=0
             angadd4=0
             angadd5=0
-            angadd1 += -1*float(raw_input("x degrees Upward J2: "))
+            angadd1 += float(raw_input("x degrees Upward J2: "))
             ltleft1 = -3.29471786287
-            ltleft2 = 1.67592124617+(90*pi/180)+(angadd1*pi/180)
+            ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
             ltleft3 = 3.39262056572+(angadd2*pi/180)
             ltleft4 = -3.38462117823865-(angadd3*pi/180)
             ltleft5 = 1.4459102321300366+(angadd4*pi/180)
@@ -176,21 +176,21 @@ if __name__ == '__main__':
             moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
 
             while cont != "n":
-                angadd1 += -1*float(raw_input("x degrees Upward J2: "))
-                ltleft2 = 1.67592124617+(90*pi/180)+(angadd1*pi/180)
+                angadd1 += float(raw_input("x degrees Upward J2: "))
+                ltleft2 = 1.67592124617+(90*pi/180)-(angadd1*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
                 angadd2 += float(raw_input("x degrees Upward J3: "))
                 ltleft3 = 3.39262056572 +(angadd2*pi/180)
                 #ltleft1 = -3.29471786287+(angadd*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd3 += -1*float(raw_input("Rot x degrees J4: "))
-                ltleft4 = -3.38462117823865+(angadd3*pi/180)
+                angadd3 += float(raw_input("Rot x degrees J4: "))
+                ltleft4 = -3.38462117823865-(angadd3*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd4 += -1*float(raw_input("Rot x degrees J5: "))
-                ltleft5 = 1.4459102321300366+(angadd4*pi/180)
+                angadd4 += float(raw_input("Rot x degrees J5: "))
+                ltleft5 = 1.4459102321300366-(angadd4*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
-                angadd5 += -1*float(raw_input("Rot x degrees J6: "))
-                ltleft6 = 0.20018753676786538+(angadd5*pi/180)
+                angadd5 += float(raw_input("Rot x degrees J6: "))
+                ltleft6 = 0.20018753676786538-(angadd5*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
                 ltleft1 += (float(raw_input("Rotate base by (degrees): "))*pi/180)
                 moveJoint([ltleft1,ltleft2,ltleft3,ltleft4,ltleft5,ltleft6])
